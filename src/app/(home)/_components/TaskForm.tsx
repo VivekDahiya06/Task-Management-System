@@ -1,6 +1,5 @@
 'use client'
 
-import React from 'react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
@@ -11,13 +10,23 @@ import { zodResolver } from '@hookform/resolvers/zod'
 
 const TaskForm = () => {
 
-    const { register, handleSubmit, formState: { errors } } = useForm<taskFormType>({
-        resolver: zodResolver(taskFormSchema)
-    })
-
+    // States and Hooks
+    const {
+        register,
+        handleSubmit,
+        formState: {
+            errors
+        } } = useForm<taskFormType>({
+            resolver: zodResolver(taskFormSchema)
+        });
+    
+    
+    // Functions
     const onSubmit = (data: taskFormType) => {
         console.log(data)
     }
+
+
     return (
         <form onSubmit={handleSubmit(onSubmit)} className='w-full max-w-md'>
             <div className='mb-4'>
@@ -49,4 +58,4 @@ const TaskForm = () => {
     )
 }
 
-export default TaskForm
+export default TaskForm;
