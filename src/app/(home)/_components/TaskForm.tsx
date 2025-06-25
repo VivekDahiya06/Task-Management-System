@@ -7,10 +7,15 @@ import { Label } from '@/components/ui/label'
 import { useForm } from 'react-hook-form'
 import { taskFormSchema, taskFormType } from '@/schemas/TaskFormSchema'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { useContext } from 'react'
+import { storeContext } from '@/store/StoreProvider'
 
 const TaskForm = () => {
 
     // States and Hooks
+    const context = useContext(storeContext);
+    if (!context) throw new Error('storeContext is null');
+    const { setTasks } = context;
     const {
         register,
         handleSubmit,
@@ -19,18 +24,19 @@ const TaskForm = () => {
         } } = useForm<taskFormType>({
             resolver: zodResolver(taskFormSchema)
         });
-    
-    
+
+
     // Functions
     const onSubmit = (data: taskFormType) => {
-        console.log(data)
+        console.log(data);
+        setTasks((prev: taskFormType[]) => [...prev, data]);
     }
 
 
     return (
         <form onSubmit={handleSubmit(onSubmit)} className='w-full max-w-md'>
             <div className='mb-4'>
-                <Label htmlFor='title'>Title</Label>
+                <Label id='title' htmlFor='title'>Title</Label>
                 <Input
                     {...register('title')}
                     placeholder='Enter a title'
@@ -39,7 +45,7 @@ const TaskForm = () => {
                 {errors?.title && <p className='text-red-600'>{errors.title.message}</p>}
             </div>
             <div className='mb-4'>
-                <Label htmlFor='description'>Description</Label>
+                <Label id='description' htmlFor='description'>Description</Label>
                 <Textarea
                     {...register('description')}
                     placeholder='Enter a description'
