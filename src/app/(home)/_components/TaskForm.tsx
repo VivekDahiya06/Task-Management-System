@@ -1,0 +1,52 @@
+'use client'
+
+import React from 'react'
+import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
+import { Textarea } from '@/components/ui/textarea'
+import { Label } from '@/components/ui/label'
+import { useForm } from 'react-hook-form'
+import { taskFormSchema, taskFormType } from '@/schemas/TaskFormSchema'
+import { zodResolver } from '@hookform/resolvers/zod'
+
+const TaskForm = () => {
+
+    const { register, handleSubmit, formState: { errors } } = useForm<taskFormType>({
+        resolver: zodResolver(taskFormSchema)
+    })
+
+    const onSubmit = (data: taskFormType) => {
+        console.log(data)
+    }
+    return (
+        <form onSubmit={handleSubmit(onSubmit)} className='w-full max-w-md'>
+            <div className='mb-4'>
+                <Label htmlFor='title'>Title</Label>
+                <Input
+                    {...register('title')}
+                    placeholder='Enter a title'
+                    className='mt-1'
+                />
+                {errors?.title && <p className='text-red-600'>{errors.title.message}</p>}
+            </div>
+            <div className='mb-4'>
+                <Label htmlFor='description'>Description</Label>
+                <Textarea
+                    {...register('description')}
+                    placeholder='Enter a description'
+                    className='mt-1'
+                />
+                {errors?.description && <p className='text-red-600'>{errors.description.message}</p>}
+            </div>
+            <Button
+                type='submit'
+                variant='outline'
+                className='w-full bg-black text-white border-2 border-black cursor-pointer'
+            >
+                Add Task
+            </Button>
+        </form>
+    )
+}
+
+export default TaskForm

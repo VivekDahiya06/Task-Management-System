@@ -1,0 +1,2 @@
+# Add this to .gitattributes in the root of your repo to stop the waring of LF to CRLF
+* text=auto
