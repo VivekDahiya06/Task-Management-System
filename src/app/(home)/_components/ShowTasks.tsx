@@ -60,18 +60,18 @@ const ShowTasks: FC = () => {
                         tasks.map((task, index) => (
                             <div key={index} className="flex items-center gap-3">
                                 <Checkbox
-                                    className='w-8 h-8 rounded-full border-2 border-gray-400'
+                                    className='w-8 h-8 rounded-full border-2 border-gray-400 cursor-pointer'
                                     checked={completed[index]}
                                     onCheckedChange={() => handleCheckboxChange(index)}
                                     aria-label="Mark task as completed"
                                 />
                                 <div className={`flex-1 border rounded-lg p-4 shadow flex flex-col gap-2 bg-white relative ${completed[index] ? 'opacity-70' : ''}`}>
-                                    <div className="flex justify-between items-start">
+                                    <div className="flex justify-between items-center">
                                         <div>
                                             <h2 className={`text-lg font-semibold ${completed[index] ? 'line-through text-gray-400' : ''}`}>{task.title}</h2>
                                             <p className={`text-gray-600 ${completed[index] ? 'line-through text-gray-400' : ''}`}>{task.description}</p>
                                         </div>
-                                        <div className="flex gap-2 ml-4">
+                                        <div className="flex gap-5 ml-4">
                                             <button onClick={() => handleUpdate(index)} aria-label="Update Task" className="hover:text-blue-600 cursor-pointer">
                                                 <SquarePen size={23} strokeWidth={1.25} />
                                             </button>
