@@ -1,5 +1,3 @@
-'use client';
-
 import TaskForm from './_components/TaskForm'
 import ShowTasks from './_components/ShowTasks'
 

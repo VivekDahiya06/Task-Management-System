@@ -19,6 +19,7 @@ const TaskForm = () => {
     const {
         register,
         handleSubmit,
+        // reset,
         formState: {
             errors
         } } = useForm<taskFormType>({
@@ -28,8 +29,8 @@ const TaskForm = () => {
 
     // Functions
     const onSubmit = (data: taskFormType) => {
-        console.log(data);
         setTasks((prev: taskFormType[]) => [...prev, data]);
+        // reset();
     }
 
 
@@ -40,7 +41,7 @@ const TaskForm = () => {
                 <Input
                     {...register('title')}
                     placeholder='Enter a title'
-                    className='mt-1'
+                    className='mt-1 border border-gray-400'
                 />
                 {errors?.title && <p className='text-red-600'>{errors.title.message}</p>}
             </div>
@@ -49,7 +50,7 @@ const TaskForm = () => {
                 <Textarea
                     {...register('description')}
                     placeholder='Enter a description'
-                    className='mt-1'
+                    className='mt-1 border border-gray-400'
                 />
                 {errors?.description && <p className='text-red-600'>{errors.description.message}</p>}
             </div>
