@@ -71,7 +71,7 @@ const ShowTasks: FC = () => {
                                             <h2 className={`text-lg font-semibold ${completed[index] ? 'line-through text-gray-400' : ''}`}>{task.title}</h2>
                                             <p className={`text-gray-600 ${completed[index] ? 'line-through text-gray-400' : ''}`}>{task.description}</p>
                                         </div>
-                                        <div className="flex gap-5 ml-4">
+                                        <div className="flex items-center gap-5 ml-4">
                                             <button onClick={() => handleUpdate(index)} aria-label="Update Task" className="hover:text-blue-600 cursor-pointer">
                                                 <SquarePen size={23} strokeWidth={1.25} />
                                             </button>
