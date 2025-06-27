@@ -9,7 +9,7 @@ const Home = () => {
       </div>
 
       <section className='flex-1 flex gap-6 min-h-0'>
-        <div className='w-1/3 flex-shrink-0'>
+        <div className='w-1/3 flex-shrink-0 mt-2'>
           <TaskForm />
         </div>
 
