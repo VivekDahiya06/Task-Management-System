@@ -3,7 +3,7 @@ import ShowTasks from './_components/ShowTasks'
 
 const Home = () => {
   return (
-    <main className='flex flex-col min-h-screen p-2 sm:p-4 overflow-hidden'>
+    <main className='flex flex-col min-h-screen p-6 md:p-4 overflow-hidden'>
       <div className='flex-shrink-0 mb-8'>
         <h1 className='text-2xl font-bold text-center'>Task Management App</h1>
       </div>

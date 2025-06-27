@@ -35,7 +35,7 @@ const TaskForm = () => {
 
 
     return (
-        <form onSubmit={handleSubmit(onSubmit)} className='w-full max-w-md'>
+        <form onSubmit={handleSubmit(onSubmit)} className='w-full'>
             <div className='mb-4'>
                 <Label id='title' htmlFor='title'>Title</Label>
                 <Input
